@@ -1,0 +1,13 @@
+---
+layout: post
+title: PUT is not UPDATE, cont'd
+tags:
+- Tumble
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '17413841'
+---
+<p>&nbsp;</p> <blockquote>PUT remains one of the most confusing HTTP verbs because it is so frequently misdescribed, even by <a href="http://www.xml.com/pub/a/2004/12/01/restful-web.html">people who really do know better</a>. The common description is that PUT is for UPDATE and POST is for creating new resources; and this is wrong, <em>wrong</em>, <strong>wrong</strong>.</blockquote> <p>Source: <a href="http://cafe.elharo.com/web/put-is-not-update/">PUT is not UPDATE</a> </p> <p>Elliote is dead on here. I am guilty of comparing REST to SQL CRUD, including PUT == UPDATE. Upon reflection, however, I always thought of a "complete" update...comparable to Eliotte's DELETE then INSERT with the same primary key. Nevertheless, despite intentions, UPDATE does carry certain connotations.</p> <p>Elliote references Joe Gregio's pioneering thoughts on REST from 3 years ago. It doesn't seem to&nbsp;suggest that PUT ==&nbsp;"partial" UPDATE.&nbsp;I recall a Roy Fielding quote (but couldn't find the reference) in saying PUT is not a byte for byte replacement of the resource by the exact contents of representation. Rather, the server interprets the representation, but does in fact update the <em>entire</em> resource with information from the representation.</p> <p>Joe does place a disclaimer in the very article that it is dangerous to begin thinking of REST in terms of SQL tables.</p> <blockquote> <p>I hesitated to include this table. By presenting it, I wanted to point out the overlap in the four basic methods of HTTP. What I <strong>don't</strong> want to happen is that you start thinking of web resources as SQL tables. Don't do that.</p></blockquote> <p>Source: <a href="http://www.xml.com/pub/a/2004/12/01/restful-web.html">How to Create a REST Protocol</a></p> <p>So it seems the lesson (finally) learned by myself is to not describe REST to people in terms of ambiguous SQL idioms. There is some overlap, but no absolutes. If the SQL comparison is necessary, disclaim the caveats upfront.</p> <p>It's difficult to avoid thinking interms of SQL. Especially for me, having taking three courses on relational algebra in college. Opposite of my upbringing, however, traditional relational databases will be marginalized over the next decade as more specialize data systems become evident (i.e. BigTable).</p>

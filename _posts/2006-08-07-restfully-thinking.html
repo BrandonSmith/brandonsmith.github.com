@@ -1,0 +1,16 @@
+---
+layout: post
+title: RESTfully Thinking
+tags:
+- Tumble
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '17413772'
+---
+<blockquote>A resource can map to the empty set, which allows references to be made to aconcept before any realization of that concept exists -- a notion that was foreign to most hypertext systems prior to the Web.</blockquote><p><a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1">http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1</a></p>
+
+<p>This is an interesting concept. Through the use of status codes, I can indicate to a client the state of a URI. I can issue URIs to resources that do not exist yet and if a client dereferences the URI an appropriate status code indicates that it does not yet exist. The client can continue to request until it either receives a different status code or the representation is returned.<br />
+</p>

@@ -1,0 +1,64 @@
+---
+layout: post
+title: User-driven, Pre-emptive APIs
+tags:
+- Tumble
+status: publish
+type: post
+published: true
+meta:
+  dsq_thread_id: '17413882'
+---
+<p>Aneel makes an argument for &quot;tools vs. methods&quot;. To summarize, should tools enforce the methodology or methodology the tool.</p>
+
+<blockquote>
+  <p>Tools need to move when we do. And they need to be made to be moved by us. But, not in a vacuum. The idea of user-driven innovation should be built into professional tools. In organizations where policy and methodology comes down from on high, when a method-enforcing tool is modified by an end-user (hi!), the bigwigs should go: &#x201C;huh, Bob is doing this differently.. wonder if he&#x2019;s onto something?&#x201D;. Then someone should go find out if he is. </p>
+</blockquote>
+
+<p>Source: <a href="http://joga.be/2006/12/05/tools-vs-methods/">tools vs. methods</a> </p>
+
+<p>IBM Rational has the concept of patterns built into the tool. Internally, IBM has contests (accompanied with decent rewards) for developing patterns for Rational.</p>
+
+<p>The same argument can be made for APIs in general. Can APIs be designed in such a flexible way that when a use case changes, so can the result when the API is invoked? <em>Can we ship with n patterns and best practices but leave the API wide open for anybody to plug in their own functionality?</em></p>
+
+<p>You bet we can. And then, falling back on Aneel's argument, once the bigwigs see that users are creating patterns, perhaps include it into the API as convenience methods.</p>
+
+<h3>Pluggable Data API</h3>
+
+<p>For instance, I'm working on a data access API that wraps JDBC access and ships with <a href="http://en.wikipedia.org/wiki/PureQuery"><strong><em>IBM's pureQuery</em></strong></a>. The main goals of the API is to enable <strong>clearer persistence code</strong> by using code to describe what is being done instead of how it is being done. Second, drastically <strong>reduce the boilerplate code</strong> associated with JDBC. Third, <strong>use collections and beans</strong> rather than ResultSet. Fourth, <strong>do not be a full-featured object relational mapper</strong>.</p>
+
+<p>Let's look at some of the methods available. The variable &quot;data&quot; in these examples are an instance of the &quot;Data&quot; interface, which defines these methods, and assumes it has been constructor injected with a DataSource.</p>
+
+<p>First, you can get a Map out of a table row:</p>
+
+<pre>Map&lt;String,Object&gt; brian = data.queryFirst(&quot;SELECT * FROM person WHERE person.name=?&quot;, &quot;Brian&quot;);</pre>
+
+<p>If you want to get at many rows:</p>
+
+<pre>List&lt;Map&lt;String,Object&gt;&gt; people = data.queryList(&quot;SELECT * FROM person WHERE person.name LIKE ?&quot;, &quot;Br%&quot;);</pre>
+
+<p>Second, you can get a POJO bean out of a table row:</p>
+
+<pre>Person brian = data.queryFirst(&quot;SELECT * FROM person WHERE person.name=?&quot;, Person.class, &quot;Brian&quot;);</pre>
+
+<p>Likewise, beans as from many rows:</p>
+
+<pre>List&lt;Person&gt; people = data.queryList(&quot;SELECT * FROM person&quot;, Person.class);</pre>
+
+<p>But what if you want to get a the result(s) of a single column, say from an aggregate function, for instance, you could retrieve a String by:</p>
+
+<pre>String name = data.queryFirst(&quot;SELECT name FROM person WHERE person.name=?&quot;, new ScalarRowFactory&lt;String&gt;(String.class),&quot;Brandon&quot;);</pre>
+
+<p>What's with the &quot;ScalarFowFactory&quot;, you ask? Well, I'm glad you did. This is the pluggable part, where user-driven extendibility makes all the difference. It would be naive to think that an API could be created that would meet all needs for all people. In fact, I often tell my collegues I work with <strong><em>&quot;If you try to create for all, you provide value for none&quot;.</em></strong> That's worth repeating...</p>
+
+<h3><font color="#666666">If you try to create for all, you provide for none.</font></h3>
+
+<p>This is the problem with JEE. It tries to boil the ocean and be the end all framework. Then we get lighter weight contenders like Spring and Co. Granted, with 1.4, we see reactive APIs for those uncomfortable with the heavyweight requirement imposed by JEE. Others see an easier method and create APIs to meet the need. Now JEE is adapting.</p>
+
+<p>So this is all about creating <strong><em>pre-emptive APIs</em></strong>. What is a pre-emptive API? It is an API that <strong><em>leaves open doors for developers to customize</em></strong> the programming experience. Yes, and that means allowing them to shoot themselves in the foot, too. Sure, we can provide convenience methods on top in the API itself, but it should not play a Microsoft and have special privileges that the user-driven portion does not.</p>
+
+<p>Would JEE be different had it been built with a pre-emptive APIs?</p>
+
+<p>So, in the above example, the Map and bean examples simply drive through the same methods that the String example did. They are simply helper methods.</p>
+
+<p>The API, however, is wide open. Methods can be of type queryFirst, queryList, queryIterator, or just plain query. queryFirst deals with one result. queryList deals with a collection of results and pre-processes results. queryIterator is like queryList but provides a lazy retrival of results on demand in user code and is more efficient in some situations.</p>

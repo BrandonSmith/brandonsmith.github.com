@@ -1,0 +1,22 @@
+---
+layout: post
+title: Atom and Optimistic Concurrency
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '17413766'
+---
+<p>Elias illustrates some thoughts about optimistic concurrency control and announces that Queso now implements OCC...<br />
+</p>
+
+<blockquote cite="http://torrez.us/archives/2006/08/04/477/">What does OCC as described by Google gives us? In my opinion, it takes Atom Protocol implementors (client and server) closer to a level where they can start thinking about merge procedures but they are not there yet.</blockquote><p class="citation"><cite cite="http://torrez.us/archives/2006/08/04/477/"><a href="http://torrez.us/archives/2006/08/04/477/">Elias Torres » Blog Archive » Optimistic Concurrency - Where is your merge code?</a></cite></p>
+
+<p>The post reminded me of several questions I had when Google announced GData that I need to follow up on. If anybody has thoughts, please post.</p>
+
+<ol><li>What is the ideal concurrency control as a service provider when the client cannot be controlled?</li>
+<li>What type of merge procedures can be generalized for Atom?</li>
+</ol>
+For instance, depending on whether an Atom entry is an envelope for content or is subclassed as a data type, all of the core elements can probably be merged without ceremony in the former case except content. Further, is it fair to push the merge responsiblities down to the client? Can we trust the client?<br />

@@ -1,0 +1,26 @@
+---
+layout: post
+title: ! 'JSON: Or why this love affair may soon end'
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+---
+<p><strong>JSON</strong>. It promises much. Using native browser Javascript parsing, the client can magically operate on data retrieved from the server with a trivial <strong><i>eval</i> </strong>function call.<br />
+</p>
+
+<p>Using <strong><i>&lt;script src="..."/&gt;</i></strong> to pull down data from another domain, something <strong>XMLHttpRequest </strong>cannot do.<br />
+</p>
+
+<p>JSON, as you all know, is an acronym for <strong>JavaScript Object Notation</strong>. Objects are not just data. They contain functions too. So not only can I bring down data, I can bring down additional functionality. Which, if you think about it, it pretty cool.</p>
+
+<p>But external JSON <strong>extremely dangerous</strong>. We are talking about arbitrary <strong>third-party code</strong> that is executed in the context of the running web page. That means any data available in the current scope is free game to that new functionality.</p>
+
+<p><strong>What can happen?</strong> <strong>Passwords </strong>might be stored in the <strong>current scope</strong>. Any data from other domains, including the original, can be scraped. Any of this data can be sent back to the third-party server. Clearly, this is an <strong>enourmous security risk</strong>, and trusting a thrid-party is not enough. <strong>Controls need to be put in place.</strong></p>
+
+<p>Can XMLHttpRequest be updated to include third-party domains? The <strong>Flash player</strong> has a nice model, albeit <strong>proprietary</strong>. They can afford many luxuries since they own the complete running client. A well-known XML document sits in a site root named "<strong>crossdomain.xml</strong>". Pretty self-explanatory at this point. Host A's XML contains entries of valid third-party domains, Host B and Host C, so that when Flash is served up from from B and C, and client Flash accesses resources on A, the Flash player first accesses the crossdomain.xml to check if the originating host (B or C) has A's permission.</p>
+
+<p>One may respond that I can return XML as a JSON string and parse using the browser's DOM API. Yeah, but doesn't this all seem like a hack, a temporary fix for the larger problem. And it may work fine for a while, <strong>but we can do better</strong>!<br />
+</p>

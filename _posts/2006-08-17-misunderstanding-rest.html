@@ -1,0 +1,36 @@
+---
+layout: post
+title: Misunderstanding REST
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '17413794'
+---
+<p>Jorgen Thelin concludes his current rant on Web 2.0 hype with...<br />
+</p>
+
+<blockquote cite="http://www.thearchitect.co.uk/weblog/archives/2006/08/000440.html">And, as if to underscore why I don't see the REST / POX / AJAX "religion" achieving too much traction among enterprises, try explaining the phrase <a href="http://jooto.com/blog/index.php/2006/08/08/replacing-service-oriented-architecture-with-resource-oriented-architecture/">"The Web is All About Relinquishing Control"</a> to any corporate security manager!</blockquote><p class="citation"><cite cite="http://www.thearchitect.co.uk/weblog/archives/2006/08/000440.html"><a href="http://www.thearchitect.co.uk/weblog/archives/2006/08/000440.html">TheArchitect.co.uk - Jorgen Thelin's weblog: Why Web 2.0 Needs WS-*</a></cite></p>
+
+<p>Without getting into WS-* vs. REST...wait, I'll get into only briefly. It is unfair to make one-to-one comparisons of WS-* and REST. RESTful implementations are not as common as the brochures claim to be. Clearly, there is a range of REST. Three, in fact...</p>
+
+<ol><li>(Unicorn) REST describes those pure implementations that the fanboys aspire to (think Atom Publishing Protocol). These are only slightly more common than unicorns but more and more "true" REST implementations are appearing.<br />
+</li>
+<li>(Anything HTTP that is not SOAP) REST is an umbrella labeling implementations that are riding the REST hype but have never read Fielding's dissertation. These are more appropriately called HTTP-POX.<br />
+</li>
+<li>(Somewhere in between) REST<br />
+</li>
+</ol>
+<p>Back to Jorgen. He quotes Alex Bunardzic's post describing "<a href="http://jooto.com/blog/index.php/2006/08/08/replacing-service-oriented-architecture-with-resource-oriented-architecture/">Resource Oriented Architecture</a>". I feel his "The Web is All About Relinquishing Control" quote is taken out of context. Alex is claiming that Web 2.0 (and REST) is more about gravitating to standards-based message passing rather than proprietary protocols.</p>
+
+<p>And before you claim that SOAP and WS-* is standards based (which it is), the moment you create a WSDL document, you've created a proprietary protocol. Sure, tools exist to generate "helper" code to talk to that protocol, but it is more or less proprietary.</p>
+
+<p>Think back to all the problems <a href="http://www.xmlrpc.com/">XML-RPC</a>, which SOAP is based on, has caused. How many blog publishing protocols exist? Why? Because a new "standard" was created when even minor tweaks were made from the previous "standard" just as your web service must be versioned as you tweak the RPC interface. Now blog engines need to support a plethora of protocols.</p>
+
+<p>The <a href="http://www.ietf.org/html.charters/atompub-charter.html">Atom Publishing Protocol</a> is not just Yet Another Publishing Protocol just as it was never intended only to be a protocol for manipulating episodic web content (think Atom Message Bus). It is an attempt to standardize the manipulation of the fundemental Web abstraction...the resource. As Alex claims the "file" is the fundemental abstraction that revolutionized computer programming decades ago, so too the "resource" abstraction is and will continue to revolutionize Web programming in ways we don't currently understand. There are <a href="http://bitworking.org/">those</a> that do.<br />
+</p>
+
+<p>Granted, WSDL 2.0 attempts to make ammend with a Doc Literal approach. And it may prove successful.<br />
+</p>

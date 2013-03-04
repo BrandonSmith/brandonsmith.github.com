@@ -1,0 +1,30 @@
+---
+layout: post
+title: REST vs. WSDL
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '17413742'
+---
+<p>Steve over at <a href="http://www.1060.org/">NetKernel</a> has an interesting take on the current state of <strong>Web services</strong> (the WSDL kind). It is the latest, and certainly not the last, that is helping me to shape my thoughts around the whole <strong>REST vs. SOAP/WSDL</strong> or <strong>REST compliments SOAP/WSDL</strong> debate.</p>
+
+<p>Steve's comments are in reaction to <a href="http://www.pocketsoap.com/weblog/2006/07/1661.html">Simon of salesforce.com</a> and <a href="http://www.bloglines.com/blog/sanjiva?id=152">Sanjiva of the WSDL spec</a>.<br />
+</p>
+
+<blockquote cite="Steve: Developing on the Edge - No, blame whoever uses WSDL">Simon explains that the reason for returning an ID twice is related to the object model of the XSD, and goes on to fault the WSDL to Source tool chain for being differently quirky on every version.Sanjiva blames Salesforce and believes that someone took a nasty class hierarchy and auto generated XML Schema and WSDL out of it</blockquote><p class="citation"><cite cite="http://www.1060.org/blogxter/entry?publicid=7B3349B1BBFDD69D74DC287D65C0B092"><a href="http://www.1060.org/blogxter/entry?publicid=7B3349B1BBFDD69D74DC287D65C0B092">Steve: Developing on the Edge - No, blame whoever uses WSDL</a></cite></p>
+
+<p>In all fairness, WSDL 2.0 does allow for <a href="http://www.w3.org/TR/wsdl20-adjuncts/#http-binding">HTTP bindings</a>. But the way it is laid out in a <a href="http://www.w3.org/TR/wsdl20-adjuncts/">separate</a><a href="http://www.w3.org/TR/wsdl20/"> document</a>, it seems more <strong>orthogonal</strong>, not a baked into the WSDL 2.0 spec.</p>
+
+<p>The question I have to keep asking myself is whether the surge of REST popularity is <strong>"raging against the machine"</strong> of SOAP/WSDL and the like, or is it because it is actually more natural to use RESTful interactions? In other words, <strong>has REST become to mean anything that is not SOAP</strong>? In many ways, I think it has.</p>
+
+<p>From my view (which is a rather low perch, might I add), there are three types of REST. Many only claim two, but I think they forget about the "REST because it is not SOAP" crowd:</p>
+
+<ol><li><a href="http://lesscode.org/2006/03/19/high-rest/">High REST</a>: I also call this "Unicorn REST" because, in the words of Don Ferguson, this type is a little bit more common than unicorns. This is REST as laid out by Roy Fielding. It makes use of all the HTTP verbs and has a completely stateless server. Status codes are these developers best friends.<br />
+</li>
+<li><a href="http://lesscode.org/2006/03/19/high-low-rest/">Low REST</a>: This is the people's REST. REST for the rest of us! This looks at how web applications have been designed over the last 10 years and challenges the thinking. It still may have some state on the server, but its developers are judicious about it. Often, the HTTP POST method is overloaded with interactions that would normally use PUT and DELETE.</li>
+<li><a href="http://www.devx.com/DevX/Article/8155">REST because it is not SOAP</a>: This group of developers don't care about Roy Fielding's dissertation and are not interested in better, scalable designs using the HTTP protocol. All they know is that a SOAP stack can be complicated. They claim REST when they mean simple XML, and oh yeah, get and send over HTTP, too.</li>
+</ol>
+Is this third group valid? Are there any more? REST has become <a href="http://www.prescod.net/rest/rest_vs_soap_overview/">overhyped beyond what Fielding intended</a>. I think it has changed they way many approach web application designs, but the second it became a buzzword and not an aspiration, it lost its meaning.<br />

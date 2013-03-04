@@ -1,0 +1,25 @@
+---
+layout: post
+title: Object Persistence vs. Data Access API
+tags:
+- Java
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '17413774'
+---
+<p>I look at domain classes constructs from Rails' ActiveRecord and Django, among others, and am jealous. Although they make enough simplifying assumptions to make integration with existing database schemas a headache, their pure simplicity make it a home run for greenfield projects.</p>
+
+<p>Switch to Java, and we have a simplified Java Persistence Architecture. It is simplified compared to previous attempts to a Java persistence API (EJB, etc). However, it is all relative. Pit JPA up against other domain class persistence and you find it quite embarassing. Although the JPA is a huge step in the right direction, it is still complicated.</p>
+
+<p>You can't blame the JPA. You can't even blame Java. Since its inception, one of Java's selling points has been that it is statically typed. That means that in order to introduce new functionality at runtime, you have to jump through quite a few hurdles. There is no clean API. And, oh yeah, you might need to do byte code injection. Talk about a nightmare to debug.</p>
+
+<p>But is Java's static nature now a bane to its existence? Microsoft seems to think so. C#, which was modeled after Java in order to win over Java developers, has introduced features traditionally available only to the dynamic language crowd. C# 1.0 made anonymous classes available. This matched Java's offering. C# 2.0 introduced anonymous functions. You can pass anonymous functions to be executed. C# 3.0 will introduce anonymous code blocks. Although the core of C# still maintains a Java-like syntax, these new features draw even closer to dyanmic languages.<br />
+</p>
+
+<p>The first treatment to make full use of anonymous code blocks is the new LINQ programming model. Language INtegrated Query seems to be the holy grail of data access lately. And begs the question. There seem to be two programming models. Object Persistence where a class maps to a table and Data Access API which is more general and provides helper functions to accomplish common tasks.</p>
+
+<p>Which is more appropriate? From the Java community perspective, which is preferable? Is it a matter of preference and opinion or does the solution change according to requirements?<br />
+</p>

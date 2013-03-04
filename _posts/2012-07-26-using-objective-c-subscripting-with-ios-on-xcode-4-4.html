@@ -1,0 +1,41 @@
+---
+layout: post
+title: Using Objective C subscripting with iOS on Xcode 4.4
+tags:
+- Tumble
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '792650106'
+  _wp-svbtle-kudos: '4'
+---
+Objective C as of Xcode 4.4 now has literals and subscripting:
+
+<!--more-->
+<pre style="padding-left: 30px;">NSDictionary *dict = @{ @"hello" : @"world"}; // dictionary literal syntax
+NSLog(@"%@", dict[@"hello"]); // subscript syntax
+NSLog(@"%@", [dict objectAtKeyedSubscript: @"hello"]); // equivalent to line 2</pre>
+As shown above, subscripting is interestingly implemented by way of operator overloading, something Apple has stayed clear until now. What this means is ANY class can define what happens when subscripting syntax is used on it.
+
+Well, I started a new iOS project to demonstrated a novel Flickr integration and thought it a good chance to leverage the streamlined syntax to access NSDictionary and NSArray objects. But, I quickly learned from compiler feedback that NSDictionary and NSArray (and their mutable subclasses) do not implement the necessary functions in iOS 5 SDK.
+
+However, if the magic takes place by way of the Xcode toolchain, perhaps an Objective C Category can coerce NSDictionary and NSArray to behave on SDKs that do not yet formally support it.
+
+The following category extensions allow subscripting on some of the core classes:
+<pre style="padding-left: 30px;">@interface NSArray(Subscripting)
+- (id) objectAtIndexedSubscript:(NSUInteger)index;
+@end
+
+@interface NSMutableArray(Subscripting)
+- (void) setObject:(id)obj atIndexedSubscript:(NSUInteger)index;
+@end
+
+@interface NSDictionary(Subscripting)
+- (id) objectForKeyedSubscript:(id)key;
+@end
+
+@interface NSMutableDictionary(Subscripting)
+- (void) setObject:(id)obj forKeyedSubscript:(id &lt;NSCopying&gt;)key;
+@end</pre>

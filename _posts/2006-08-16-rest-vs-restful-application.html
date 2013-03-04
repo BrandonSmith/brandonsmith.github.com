@@ -1,0 +1,30 @@
+---
+layout: post
+title: REST vs. RESTful Application
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '17413788'
+  _wp-svbtle-kudos: '8'
+---
+<p>Today I was reminincing with a colleague about discussions my team had during the early stages of my current project. To many on the team, the principles of REST were very new and we all had growing experiences with changing our thinking from RPC thinking to resource thinking. We have come a long way and I know our work will help our customers to take advantage of the benefits that RESTful application design offers.<br />
+</p>
+
+<p>A case in point. In one of the issues we were tackling during these early discussions dealt with the architecture of a distributed messaging system. Two solutions were proposed to contrast and learn REST principles. I won't go into exact particulars but will provide context.<br />
+</p>
+
+<p>The first consisted of a subscription system where Server B registers with Server A to receive events. It does this by POSTing a new entry into a collection on Server A with a URI to publish back events. Basically a callback system. WS-* has a similar mechanism.</p>
+
+<p>The other solution consisted of comet-style requests.</p>
+
+<p>Both adhere to REST principles, focusing on resources. The first is a RESTful application and the second is REST in general. I believe there is a clear difference.</p>
+
+<p>For many on the team, the differences were subtle, claiming that the first did not adhere to REST principles because the server maintained state in the form of a subscription list. However, REST says nothing about application state, only that the interaction between client and server must remain stateless.</p>
+
+<p> Simply put, the server does not maintain any information on behalf of a client required to successfully process a request. In other words...session.</p>
+
+<p>So there is a difference between a RESTful application and REST.<br />
+</p>

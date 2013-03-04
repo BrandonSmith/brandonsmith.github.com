@@ -1,0 +1,12 @@
+---
+layout: post
+title: Misunderstanding REST, part 2
+tags:
+- Enterprise Web 2.0
+status: publish
+type: post
+published: true
+meta:
+  dsq_thread_id: '17413895'
+---
+<p>From <a href="http://www.amazon.com/gp/browse.html?node=342335011">Amazon SimpleDB homepage</a>:</p>  <blockquote>   <p>GET, PUT or DELETE <i>items</i> in your domain</p> </blockquote>  <p>Sounds RESTful? <a href="http://www.dehora.net/journal/2007/12/16/amazon-simpledb-non-rest-api/">It isn't</a>. In fact, when Amazon's SimpleDB went public on Friday, December 12, 2007, the opening paragraphs on its homepage claimed it &quot;RESTfulness&quot;. Now, after community backlash, the homepage seems to be mysteriously lacking such a claim and you must dig <a href="http://docs.amazonwebservices.com/AmazonSimpleDB/2007-11-07/DeveloperGuide/?">deeper into documentation</a> to uncover such <a href="http://bitworking.org/news/277/SimpleDB-is-GETSful">fallacies</a>:</p>  <blockquote>   <p>Amazon SimpleDB REST calls are made using HTTP GET requests. The Action query parameter provides the method called and the URI specifies the target of the call. Additional call parameters are specified as HTTP query parameters. The response is an XML document that conforms to a schema.</p> </blockquote>  <p>Some time ago I reviewed, what I believe, to be the <a href="http://16cards.com/2006/08/17/misunderstanding-rest/">major misunderstandings about RESTful principles</a>. I categorized three different &quot;interpretations&quot; of REST:</p>  <blockquote>   <ol>     <li>(Unicorn) REST describes those pure implementations that the fanboys aspire to (think Atom Publishing Protocol). These are only slightly more common than unicorns but more and more &#8220;true&#8221; REST implementations are appearing. </li>      <li>(Anything HTTP that is not SOAP) REST is an umbrella labeling implementations that are riding the REST hype but have never read Fielding&#8217;s dissertation. These are more appropriately called HTTP-POX. </li>      <li>(Somewhere in between) REST </li>   </ol> </blockquote>  <p>Amazon clearly interprets REST as category #2.</p>  <div class="wlWriterSmartContent" id="scid:0767317B-992E-4b12-91E0-4F059A8CECA8:f736941b-dce4-4dbe-9c93-367ba4935fbd" style="padding-right: 0px; display: inline; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px">Technorati Tags: <a href="http://technorati.com/tags/simpledb%20rest%20amazon" rel="tag">simpledb rest amazon</a></div>
