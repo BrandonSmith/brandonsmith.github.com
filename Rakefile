@@ -5,8 +5,8 @@ require 'time'
 
 SOURCE = "."
 CONFIG = {
-  'version' => "0.3.0",
   'themes' => File.join(SOURCE, "_includes", "themes"),
+  'version' => "0.3.0",
   'layouts' => File.join(SOURCE, "_layouts"),
   'posts' => File.join(SOURCE, "_posts"),
   'post_ext' => "md",
